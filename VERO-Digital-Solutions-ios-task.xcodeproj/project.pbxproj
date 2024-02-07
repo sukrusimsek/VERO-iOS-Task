@@ -9,19 +9,25 @@
 /* Begin PBXBuildFile section */
 		8D0801312B72C2CD00975C6A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801302B72C2CD00975C6A /* AppDelegate.swift */; };
 		8D0801332B72C2CD00975C6A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801322B72C2CD00975C6A /* SceneDelegate.swift */; };
-		8D0801352B72C2CD00975C6A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801342B72C2CD00975C6A /* ViewController.swift */; };
+		8D0801352B72C2CD00975C6A /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801342B72C2CD00975C6A /* HomeScreen.swift */; };
 		8D08013A2B72C2D300975C6A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D0801392B72C2D300975C6A /* Assets.xcassets */; };
 		8D08013D2B72C2D300975C6A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8D08013B2B72C2D300975C6A /* LaunchScreen.storyboard */; };
+		8D0801462B73E94300975C6A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801452B73E94300975C6A /* HomeViewModel.swift */; };
+		8D08016B2B74030A00975C6A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */; };
+		8D08016D2B7403BD00975C6A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08016C2B7403BD00975C6A /* Model.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		8D08012D2B72C2CD00975C6A /* VERO-Digital-Solutions-ios-task.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VERO-Digital-Solutions-ios-task.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0801302B72C2CD00975C6A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D0801322B72C2CD00975C6A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8D0801342B72C2CD00975C6A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		8D0801342B72C2CD00975C6A /* HomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		8D0801392B72C2D300975C6A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8D08013C2B72C2D300975C6A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D08013E2B72C2D300975C6A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D0801452B73E94300975C6A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		8D08016A2B74030A00975C6A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		8D08016C2B7403BD00975C6A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,41 @@
 		8D08012F2B72C2CD00975C6A /* VERO-Digital-Solutions-ios-task */ = {
 			isa = PBXGroup;
 			children = (
+				8D0801652B74025000975C6A /* New Group */,
+				8D0801642B74024900975C6A /* Model */,
+				8D0801442B73E92D00975C6A /* Screen */,
 				8D0801302B72C2CD00975C6A /* AppDelegate.swift */,
 				8D0801322B72C2CD00975C6A /* SceneDelegate.swift */,
-				8D0801342B72C2CD00975C6A /* ViewController.swift */,
 				8D0801392B72C2D300975C6A /* Assets.xcassets */,
 				8D08013B2B72C2D300975C6A /* LaunchScreen.storyboard */,
 				8D08013E2B72C2D300975C6A /* Info.plist */,
+				8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */,
 			);
 			path = "VERO-Digital-Solutions-ios-task";
+			sourceTree = "<group>";
+		};
+		8D0801442B73E92D00975C6A /* Screen */ = {
+			isa = PBXGroup;
+			children = (
+				8D0801342B72C2CD00975C6A /* HomeScreen.swift */,
+				8D0801452B73E94300975C6A /* HomeViewModel.swift */,
+			);
+			path = Screen;
+			sourceTree = "<group>";
+		};
+		8D0801642B74024900975C6A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8D08016C2B7403BD00975C6A /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8D0801652B74025000975C6A /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -134,9 +167,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D0801352B72C2CD00975C6A /* ViewController.swift in Sources */,
+				8D0801352B72C2CD00975C6A /* HomeScreen.swift in Sources */,
 				8D0801312B72C2CD00975C6A /* AppDelegate.swift in Sources */,
 				8D0801332B72C2CD00975C6A /* SceneDelegate.swift in Sources */,
+				8D08016D2B7403BD00975C6A /* Model.swift in Sources */,
+				8D0801462B73E94300975C6A /* HomeViewModel.swift in Sources */,
+				8D08016B2B74030A00975C6A /* CoreDataModel.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +389,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8D08016A2B74030A00975C6A /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 8D08016A2B74030A00975C6A /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 8D0801252B72C2CD00975C6A /* Project object */;
 }
