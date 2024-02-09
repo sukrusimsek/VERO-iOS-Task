@@ -15,6 +15,11 @@
 		8D0801462B73E94300975C6A /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801452B73E94300975C6A /* HomeViewModel.swift */; };
 		8D08016B2B74030A00975C6A /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */; };
 		8D08016D2B7403BD00975C6A /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08016C2B7403BD00975C6A /* Model.swift */; };
+		8D0801702B741B8C00975C6A /* UIView+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08016F2B741B8C00975C6A /* UIView+Ext.swift */; };
+		8D0801732B7420D900975C6A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801722B7420D900975C6A /* NetworkManager.swift */; };
+		8D0801762B75027500975C6A /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801752B75027500975C6A /* UIViewController+Alert.swift */; };
+		8D08017A2B7524BE00975C6A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801792B7524BE00975C6A /* CustomCell.swift */; };
+		8D08017C2B752D2400975C6A /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08017B2B752D2400975C6A /* UIColor+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +33,11 @@
 		8D0801452B73E94300975C6A /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		8D08016A2B74030A00975C6A /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		8D08016C2B7403BD00975C6A /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
+		8D08016F2B741B8C00975C6A /* UIView+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Ext.swift"; sourceTree = "<group>"; };
+		8D0801722B7420D900975C6A /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		8D0801752B75027500975C6A /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		8D0801792B7524BE00975C6A /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		8D08017B2B752D2400975C6A /* UIColor+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,15 +70,12 @@
 		8D08012F2B72C2CD00975C6A /* VERO-Digital-Solutions-ios-task */ = {
 			isa = PBXGroup;
 			children = (
-				8D0801652B74025000975C6A /* New Group */,
+				8D0801742B75026500975C6A /* Helpers */,
+				8D0801712B74205100975C6A /* Supports */,
+				8D08016E2B741B7B00975C6A /* Extensions */,
+				8D0801652B74025000975C6A /* Network */,
 				8D0801642B74024900975C6A /* Model */,
 				8D0801442B73E92D00975C6A /* Screen */,
-				8D0801302B72C2CD00975C6A /* AppDelegate.swift */,
-				8D0801322B72C2CD00975C6A /* SceneDelegate.swift */,
-				8D0801392B72C2D300975C6A /* Assets.xcassets */,
-				8D08013B2B72C2D300975C6A /* LaunchScreen.storyboard */,
-				8D08013E2B72C2D300975C6A /* Info.plist */,
-				8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */,
 			);
 			path = "VERO-Digital-Solutions-ios-task";
 			sourceTree = "<group>";
@@ -76,6 +83,7 @@
 		8D0801442B73E92D00975C6A /* Screen */ = {
 			isa = PBXGroup;
 			children = (
+				8D0801782B75248800975C6A /* Cell */,
 				8D0801342B72C2CD00975C6A /* HomeScreen.swift */,
 				8D0801452B73E94300975C6A /* HomeViewModel.swift */,
 			);
@@ -90,11 +98,50 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		8D0801652B74025000975C6A /* New Group */ = {
+		8D0801652B74025000975C6A /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				8D0801722B7420D900975C6A /* NetworkManager.swift */,
 			);
-			path = "New Group";
+			path = Network;
+			sourceTree = "<group>";
+		};
+		8D08016E2B741B7B00975C6A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8D08016F2B741B8C00975C6A /* UIView+Ext.swift */,
+				8D08017B2B752D2400975C6A /* UIColor+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8D0801712B74205100975C6A /* Supports */ = {
+			isa = PBXGroup;
+			children = (
+				8D0801302B72C2CD00975C6A /* AppDelegate.swift */,
+				8D08013B2B72C2D300975C6A /* LaunchScreen.storyboard */,
+				8D0801392B72C2D300975C6A /* Assets.xcassets */,
+				8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */,
+				8D08013E2B72C2D300975C6A /* Info.plist */,
+				8D0801322B72C2CD00975C6A /* SceneDelegate.swift */,
+			);
+			name = Supports;
+			sourceTree = "<group>";
+		};
+		8D0801742B75026500975C6A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8D0801752B75027500975C6A /* UIViewController+Alert.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8D0801782B75248800975C6A /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8D0801792B7524BE00975C6A /* CustomCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,10 +214,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0801762B75027500975C6A /* UIViewController+Alert.swift in Sources */,
 				8D0801352B72C2CD00975C6A /* HomeScreen.swift in Sources */,
+				8D08017A2B7524BE00975C6A /* CustomCell.swift in Sources */,
 				8D0801312B72C2CD00975C6A /* AppDelegate.swift in Sources */,
+				8D08017C2B752D2400975C6A /* UIColor+Ext.swift in Sources */,
 				8D0801332B72C2CD00975C6A /* SceneDelegate.swift in Sources */,
 				8D08016D2B7403BD00975C6A /* Model.swift in Sources */,
+				8D0801732B7420D900975C6A /* NetworkManager.swift in Sources */,
+				8D0801702B741B8C00975C6A /* UIView+Ext.swift in Sources */,
 				8D0801462B73E94300975C6A /* HomeViewModel.swift in Sources */,
 				8D08016B2B74030A00975C6A /* CoreDataModel.xcdatamodeld in Sources */,
 			);

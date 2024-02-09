@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct Model: Decodable {
+struct Model: Codable {
     let title: String
     let task: String
-    let desc: String
-    let colorCode: String
+    let description: String
+    let colorCode: String?
 }
