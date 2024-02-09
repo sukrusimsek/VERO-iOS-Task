@@ -39,7 +39,14 @@ class CustomCell: UITableViewCell {
     private let colorView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 5
+        view.layer.masksToBounds = true
+        return view
+    }()
+    private let colorViewVertical: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.layer.cornerRadius = 5
         view.layer.masksToBounds = true
         return view
     }()
@@ -58,20 +65,27 @@ class CustomCell: UITableViewCell {
         contentView.addSubview(titleLbl)
         contentView.addSubview(descriptionLbl)
         contentView.addSubview(colorView)
+        contentView.addSubview(colorViewVertical)
     }
     private func configureConstraints() {
         NSLayoutConstraint.activate([
             taskLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            taskLbl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
+            taskLbl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             taskLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
             titleLbl.leadingAnchor.constraint(equalTo: taskLbl.leadingAnchor),
             titleLbl.topAnchor.constraint(equalTo: taskLbl.bottomAnchor, constant: 10),
+            descriptionLbl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
             descriptionLbl.leadingAnchor.constraint(equalTo: titleLbl.leadingAnchor),
             descriptionLbl.topAnchor.constraint(equalTo: titleLbl.bottomAnchor, constant: 10),
             descriptionLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            colorView.heightAnchor.constraint(equalToConstant: contentView.frame.height),
-            colorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            colorView.widthAnchor.constraint(equalToConstant: 100),
+            colorView.heightAnchor.constraint(equalToConstant: contentView.frame.size.height/4),
+            colorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor,constant: 2),
+            colorView.widthAnchor.constraint(equalToConstant: contentView.frame.size.width),
+            colorViewVertical.topAnchor.constraint(equalTo: contentView.topAnchor),
+            colorViewVertical.bottomAnchor.constraint(equalTo: descriptionLbl.bottomAnchor),
+            colorViewVertical.widthAnchor.constraint(equalToConstant: contentView.frame.size.height/4),
+            colorViewVertical.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            
         ])
     }
     
@@ -81,7 +95,9 @@ class CustomCell: UITableViewCell {
         descriptionLbl.text = task.description
         if let colorCode = task.colorCode {
             colorView.backgroundColor = UIColor(hex: colorCode)
+            colorViewVertical.backgroundColor = UIColor(hex: colorCode)
         }
+        
 
         
     }

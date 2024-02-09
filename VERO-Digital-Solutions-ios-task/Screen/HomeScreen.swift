@@ -58,9 +58,8 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
         tableView.delegate = self
         tableView.dataSource = self
         
-//        tableView.rowHeight = UITableView.automaticDimension
-//        tableView.estimatedRowHeight = 500
-        tableView.rowHeight = 160
+        self.tableView.estimatedRowHeight = 180
+        self.tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CustomCell.self, forCellReuseIdentifier: "Cell")
         view.addSubview(tableView)
         tableView.pinToEdgesOf(view: view)
@@ -137,13 +136,13 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
         }
     }
     func createRefresh() {
+        refrestControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
         refrestControl.addTarget(self, action: #selector(activeRefresh), for: .valueChanged)
         tableView.refreshControl = refrestControl
     }
     @objc func activeRefresh(refreshControl: UIRefreshControl) {
-        self.fetchData()
-        
         DispatchQueue.main.asyncAfter(deadline: .now()+1) {
+            self.filteredInfo = self.allInfo
             self.tableView.reloadData()
             self.refrestControl.endRefreshing()
         }
@@ -163,19 +162,13 @@ extension HomeScreen: UISearchResultsUpdating, UISearchControllerDelegate, UISea
         tableView.reloadData()
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchController.searchBar.text?.removeAll()
+        searchController.searchBar.text = ""
         searchController.searchBar.endEditing(true)
-        
+
         DispatchQueue.main.async {
+            self.filteredInfo = self.allInfo
             self.tableView.reloadData()
-            
             
         }
     }
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-//        if let searchText = searchBar.text, searchText.isEmpty {
-//
-//            tableView.reloadData()
-//        }
-//    }
 }
