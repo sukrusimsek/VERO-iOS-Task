@@ -9,7 +9,6 @@ import Foundation
 protocol HomeViewModelInterface {
     var view: HomeScreenInterface? { get set }
     func viewDidLoad()
-    func viewWillAppear()
 }
 
 
@@ -26,12 +25,8 @@ extension HomeViewModel: HomeViewModelInterface {
         view?.fetchData()
         view?.configureSearchController()
         view?.configureTableView()
-        view?.saveToCoreData()
         view?.networkConnected()
         view?.createRefresh()
     }
-    func viewWillAppear() {
-        view?.networkConnected()
-        
-    }
+    
 }

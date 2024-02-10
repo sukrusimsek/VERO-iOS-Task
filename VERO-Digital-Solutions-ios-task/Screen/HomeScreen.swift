@@ -6,8 +6,8 @@
 //
 
 import UIKit
-import AVFoundation
 import Network
+import Reachability
 
 protocol HomeScreenInterface: AnyObject {
         func configureVC()
@@ -26,7 +26,7 @@ final class HomeScreen: UIViewController {
     private var searchController = UISearchController()
     private var networkcheck = NWPathMonitor()
     private var refrestControl = UIRefreshControl()
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
     var allInfo = [Model]()
     var filteredInfo = [Model]()
     
@@ -35,18 +35,14 @@ final class HomeScreen: UIViewController {
         viewModel.view = self
         viewModel.viewDidLoad()
     }
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        viewModel.view = self
-        viewModel.viewWillAppear()
-    }
-
+    
 }
 
 
 extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewDataSource {
     func configureVC() {
         navigationController?.navigationBar.topItem?.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "qrcode.viewfinder"), style: .plain, target: self, action: #selector(qrButtonTapped))
+
         
     }
     @objc func qrButtonTapped() {
@@ -57,7 +53,6 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.delegate = self
         tableView.dataSource = self
-        
         self.tableView.estimatedRowHeight = 180
         self.tableView.rowHeight = UITableView.automaticDimension
         tableView.register(CustomCell.self, forCellReuseIdentifier: "Cell")
@@ -83,6 +78,7 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
                 guard let tasks = tasks else { return }
                 self.allInfo = tasks
                 self.filteredInfo = tasks
+                
                 DispatchQueue.main.async {
                     self.saveToCoreData()
                     self.tableView.reloadData()
@@ -91,6 +87,7 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
         }
     }
     func saveToCoreData() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         for info in allInfo {
             let entity = CoreDataModel(context: context)
             entity.title = info.title
@@ -100,25 +97,28 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
         }
         do {
             try context.save()
+            print("Data saved CoreData")
         } catch {
             print("Found Error: \(error.localizedDescription)")
         }
+        (UIApplication.shared.delegate as! AppDelegate).saveContext()
     }
     func fetchFromCoreData() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         do {
             allInfo = try context.fetch(CoreDataModel.fetchRequest()).map {
                 Model(title: $0.title ?? "", task: $0.task ?? "", description: $0.desc ?? "", colorCode: $0.colorCode ?? "")
             }
             filteredInfo = allInfo
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-            
+            tableView.reloadData()
+            print("Data fetched from CoreData")
         } catch {
-            print("Error Found: \(error)")
+            print("Error Fetch at CoreData: \(error)")
         }
+        
     }
     func configureSearchController() {
+        searchController.delegate = self
         navigationItem.titleView = searchController.searchBar
         searchController.searchResultsUpdater = self
         searchController.hidesNavigationBarDuringPresentation = false
@@ -126,14 +126,15 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
         
     }
     func networkConnected() {
-        let queue = DispatchQueue(label: "NetworkMonitor")
-        networkcheck.start(queue: queue)
-        networkcheck.pathUpdateHandler = { path in
-            if path.status == .unsatisfied {
-                self.fetchFromCoreData()
-                self.alert(message: "Network Offline")
+        let reachability = try! Reachability()
+        if reachability.connection == .unavailable {  // offline
+            if let savedData = try? fetchFromCoreData() {
+                tableView.reloadData()
             }
+        } else { // online
+            print("Onlinee!!!")
         }
+
     }
     func createRefresh() {
         refrestControl.attributedTitle = NSAttributedString(string: "Pull to Refresh")
@@ -153,6 +154,7 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
 extension HomeScreen: UISearchResultsUpdating, UISearchControllerDelegate, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let text = searchController.searchBar.text, text != "" else { return }
+        
         filteredInfo = allInfo.filter({ task in
             let title =  task.title.lowercased().contains(text.lowercased())
             let task = task.task.lowercased().contains(text.lowercased())
@@ -164,11 +166,16 @@ extension HomeScreen: UISearchResultsUpdating, UISearchControllerDelegate, UISea
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchController.searchBar.text = ""
         searchController.searchBar.endEditing(true)
-
         DispatchQueue.main.async {
             self.filteredInfo = self.allInfo
             self.tableView.reloadData()
             
         }
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+//        if searchText.count == 0 {
+//            searchBar.searchTextField.resignFirstResponder()
+//            tableView.reloadData()
+//        }
     }
 }

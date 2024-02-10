@@ -20,7 +20,7 @@ extension UIColor {
         case 8:
             (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
         default:
-            (a, r, g, b) = (255, 227, 225, 217)//If we have optionals area we can use this defaulf color.
+            (a, r, g, b) = (255, 199, 200, 204)//If we have optionals area we can use this defaulf color.
         }
         self.init(red: CGFloat(r) / 255, green: CGFloat(g) / 255, blue: CGFloat(b) / 255, alpha: CGFloat(a) / 255)
     }

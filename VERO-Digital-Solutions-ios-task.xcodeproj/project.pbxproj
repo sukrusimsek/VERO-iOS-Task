@@ -20,6 +20,7 @@
 		8D0801762B75027500975C6A /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801752B75027500975C6A /* UIViewController+Alert.swift */; };
 		8D08017A2B7524BE00975C6A /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D0801792B7524BE00975C6A /* CustomCell.swift */; };
 		8D08017C2B752D2400975C6A /* UIColor+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D08017B2B752D2400975C6A /* UIColor+Ext.swift */; };
+		8D0801802B77A79300975C6A /* Reachability in Frameworks */ = {isa = PBXBuildFile; productRef = 8D08017F2B77A79300975C6A /* Reachability */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8D0801802B77A79300975C6A /* Reachability in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,6 +72,12 @@
 		8D08012F2B72C2CD00975C6A /* VERO-Digital-Solutions-ios-task */ = {
 			isa = PBXGroup;
 			children = (
+				8D0801322B72C2CD00975C6A /* SceneDelegate.swift */,
+				8D0801302B72C2CD00975C6A /* AppDelegate.swift */,
+				8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */,
+				8D08013B2B72C2D300975C6A /* LaunchScreen.storyboard */,
+				8D0801392B72C2D300975C6A /* Assets.xcassets */,
+				8D08013E2B72C2D300975C6A /* Info.plist */,
 				8D0801742B75026500975C6A /* Helpers */,
 				8D0801712B74205100975C6A /* Supports */,
 				8D08016E2B741B7B00975C6A /* Extensions */,
@@ -118,12 +126,6 @@
 		8D0801712B74205100975C6A /* Supports */ = {
 			isa = PBXGroup;
 			children = (
-				8D0801302B72C2CD00975C6A /* AppDelegate.swift */,
-				8D08013B2B72C2D300975C6A /* LaunchScreen.storyboard */,
-				8D0801392B72C2D300975C6A /* Assets.xcassets */,
-				8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */,
-				8D08013E2B72C2D300975C6A /* Info.plist */,
-				8D0801322B72C2CD00975C6A /* SceneDelegate.swift */,
 			);
 			name = Supports;
 			sourceTree = "<group>";
@@ -160,6 +162,9 @@
 			dependencies = (
 			);
 			name = "VERO-Digital-Solutions-ios-task";
+			packageProductDependencies = (
+				8D08017F2B77A79300975C6A /* Reachability */,
+			);
 			productName = "VERO-Digital-Solutions-ios-task";
 			productReference = 8D08012D2B72C2CD00975C6A /* VERO-Digital-Solutions-ios-task.app */;
 			productType = "com.apple.product-type.application";
@@ -188,6 +193,9 @@
 				Base,
 			);
 			mainGroup = 8D0801242B72C2CD00975C6A;
+			packageReferences = (
+				8D08017E2B77A79300975C6A /* XCRemoteSwiftPackageReference "Reachability" */,
+			);
 			productRefGroup = 8D08012E2B72C2CD00975C6A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -376,7 +384,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -405,7 +413,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,6 +449,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8D08017E2B77A79300975C6A /* XCRemoteSwiftPackageReference "Reachability" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ashleymills/Reachability.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8D08017F2B77A79300975C6A /* Reachability */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8D08017E2B77A79300975C6A /* XCRemoteSwiftPackageReference "Reachability" */;
+			productName = Reachability;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		8D0801692B74030A00975C6A /* CoreDataModel.xcdatamodeld */ = {
