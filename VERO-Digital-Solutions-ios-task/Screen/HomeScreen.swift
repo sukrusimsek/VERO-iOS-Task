@@ -8,6 +8,7 @@
 import UIKit
 import Network
 import Reachability
+import CoreData
 
 protocol HomeScreenInterface: AnyObject {
         func configureVC()
@@ -18,6 +19,7 @@ protocol HomeScreenInterface: AnyObject {
         func fetchFromCoreData()
         func networkConnected()
         func createRefresh()
+        func refreshCoreData()
     
 }
 final class HomeScreen: UIViewController {
@@ -88,6 +90,7 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
     }
     func saveToCoreData() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        refreshCoreData()
         for info in allInfo {
             let entity = CoreDataModel(context: context)
             entity.title = info.title
@@ -102,6 +105,20 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
             print("Found Error: \(error.localizedDescription)")
         }
         (UIApplication.shared.delegate as! AppDelegate).saveContext()
+    }
+    func refreshCoreData() {
+        let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: "CoreDataModel")
+        do {
+            let records = try context.fetch(fetchRequest)
+            for case let record as NSManagedObject in records {
+                context.delete(record)
+                print("Data Core datadan silindi.")
+            }
+            try context.save()
+        } catch {
+            print("Datalar coredatadan silinemedi: \(error)")
+        } 
     }
     func fetchFromCoreData() {
         let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -128,11 +145,11 @@ extension HomeScreen: HomeScreenInterface , UITableViewDelegate, UITableViewData
     func networkConnected() {
         let reachability = try! Reachability()
         if reachability.connection == .unavailable {  // offline
-            if let savedData = try? fetchFromCoreData() {
-                tableView.reloadData()
-            }
-        } else { // online
-            print("Onlinee!!!")
+            allInfo.removeAll()
+            fetchFromCoreData()
+            print("network offline")
+        } else {
+            print("Network Online")
         }
 
     }
