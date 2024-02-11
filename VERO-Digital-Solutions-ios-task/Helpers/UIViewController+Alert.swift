@@ -12,7 +12,7 @@ extension UIViewController {
         let OKAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alertController.addAction(OKAction)
         self.present(alertController, animated: true, completion: nil)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5 ) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1 ) {
             alertController.dismiss(animated: true)
         }
     }

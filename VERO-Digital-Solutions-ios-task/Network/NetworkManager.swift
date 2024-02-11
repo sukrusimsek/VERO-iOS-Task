@@ -12,6 +12,7 @@ class NetworkManager {
     
     static let shared = NetworkManager()
     private init() {}
+    //To retrieve data from the API, we must first send a request via POST.
     func authenticateUser(completion: @escaping (String?) -> Void) {
         let headers = [
             "Authorization": "Basic QVBJX0V4cGxvcmVyOjEyMzQ1NmlzQUxhbWVQYXNz",
@@ -49,7 +50,7 @@ class NetworkManager {
         }
         task.resume()
     }
-
+    //We use GET to receive and redirect the data coming from the requests sent to the API.
     func fetchTasks(accessToken: String, completion: @escaping ([Model]?) -> Void) {
         let urlString = "https://api.baubuddy.de/dev/index.php/v1/tasks/select"
         guard let url = URL(string: urlString) else {

@@ -8,7 +8,7 @@
 import UIKit
 
 class CustomCell: UITableViewCell {
-
+    //Configure instances
     private let taskLbl: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -80,53 +80,37 @@ class CustomCell: UITableViewCell {
     }
     private func configureConstraints() {
         NSLayoutConstraint.activate([
+            //backgroundColorCell cons.
             backgroundColorCell.leadingAnchor.constraint(equalTo: contentView.leadingAnchor,constant: 16),
             backgroundColorCell.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             backgroundColorCell.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
             backgroundColorCell.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            //colorView cons.
             colorView.topAnchor.constraint(equalTo: backgroundColorCell.topAnchor),
             colorView.leadingAnchor.constraint(equalTo: backgroundColorCell.leadingAnchor),
             colorView.trailingAnchor.constraint(equalTo: colorViewVertical.trailingAnchor),
             colorView.heightAnchor.constraint(equalToConstant: 12),
+            //colorViewVertical cons.
             colorViewVertical.topAnchor.constraint(equalTo: backgroundColorCell.topAnchor),
             colorViewVertical.bottomAnchor.constraint(equalTo: backgroundColorCell.bottomAnchor),
             colorViewVertical.widthAnchor.constraint(equalToConstant: 12),
             colorViewVertical.trailingAnchor.constraint(equalTo: backgroundColorCell.trailingAnchor),
-            
-            
+            //taskLbl cons.
             taskLbl.topAnchor.constraint(equalTo: colorView.bottomAnchor, constant: 5),
             taskLbl.leadingAnchor.constraint(equalTo: backgroundColorCell.leadingAnchor, constant: 5),
             taskLbl.trailingAnchor.constraint(equalTo: backgroundColorCell.trailingAnchor, constant: -5),
+            //titleLbl cons.
             titleLbl.leadingAnchor.constraint(equalTo: taskLbl.leadingAnchor),
             titleLbl.trailingAnchor.constraint(equalTo: taskLbl.trailingAnchor),
             titleLbl.topAnchor.constraint(equalTo: taskLbl.bottomAnchor, constant: 5),
+            //descriptionLbl cons.
             descriptionLbl.leadingAnchor.constraint(equalTo: taskLbl.leadingAnchor),
             descriptionLbl.trailingAnchor.constraint(equalTo: taskLbl.trailingAnchor),
             descriptionLbl.topAnchor.constraint(equalTo: titleLbl.bottomAnchor, constant: 5),
             descriptionLbl.bottomAnchor.constraint(equalTo: backgroundColorCell.bottomAnchor, constant: -5),
-            
-            
-//            taskLbl.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-//            taskLbl.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-//            taskLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: 16),
-//            titleLbl.leadingAnchor.constraint(equalTo: taskLbl.leadingAnchor),
-//            titleLbl.topAnchor.constraint(equalTo: taskLbl.bottomAnchor, constant: 10),
-//            descriptionLbl.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-//            descriptionLbl.leadingAnchor.constraint(equalTo: titleLbl.leadingAnchor),
-//            descriptionLbl.topAnchor.constraint(equalTo: titleLbl.bottomAnchor, constant: 10),
-//            descriptionLbl.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-//            colorView.heightAnchor.constraint(equalToConstant: contentView.frame.size.height/4),
-//            colorView.trailingAnchor.constraint(equalTo: colorViewVertical.trailingAnchor),
-//            colorView.leadingAnchor.constraint(equalTo: taskLbl.leadingAnchor),
-//            colorViewVertical.topAnchor.constraint(equalTo: contentView.topAnchor),
-//            colorViewVertical.bottomAnchor.constraint(equalTo: descriptionLbl.bottomAnchor),
-//            colorViewVertical.widthAnchor.constraint(equalToConstant: contentView.frame.size.height/4),
-//            colorViewVertical.trailingAnchor.constraint(equalTo: backgroundColorCell.trailingAnchor),
-
-            
         ])
     }
-    
+    //Configure cell input.
     func cellSetup(_ task: Model ) {
         taskLbl.text = task.task
         titleLbl.text = task.title
